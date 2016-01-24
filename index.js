@@ -162,7 +162,7 @@ app.get('/posts/:tagId', function (req, res)
 
 
 
-var server = app.listen(PORT, function () {
+var server = app.listen(process.env.PORT || PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
 
