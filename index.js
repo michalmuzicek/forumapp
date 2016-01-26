@@ -67,7 +67,7 @@ var refresh = function()
         } else {
           console.log('No document(s) found with defined "find" criteria!');
         }
-          db.close(); //close connection on the LAST request
+          //db.close(); //close connection on the LAST request
           });                      
     }
     
@@ -147,7 +147,7 @@ app.get('/posts/:tagId', function (req, res)
 				      } else {
 				        console.log('No document(s) found with defined "find" criteria!');
 				      }
-				      db.close(); //close connection on the LAST request
+				      //db.close(); //close connection on the LAST request
 
 				      var result = {"posts" : result}
 				      res.send(result);
@@ -229,7 +229,7 @@ app.post('/posts',parseUsername,authorize, function (req, res)
         }, function(err3, result2) {
         assert.equal(err3, null);
         console.log("Inserted post into the posts collection.");
-        db.close();
+        //db.close();
         refresh(); //keep the data variables up to date
         }         
       );
@@ -265,7 +265,7 @@ app.post('/threads',parseUsername,authorize, function (req, res) {
         assert.equal(err2, null);   
         console.log("Inserted thread into the threads collection.");
         success = true;
-        db.close();
+        //db.close();
         refresh(); //keep the data variables up to date
         
         if(success)
