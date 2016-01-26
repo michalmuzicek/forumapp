@@ -27,10 +27,9 @@ var refresh = function()
       console.log('Connection established to', url);
   
       // Get the documents collection     
-      var mycollection = db.collection('threads');
-      mycollection.find().sort({"id":-1}).limit(1).toArray(function(err,result){last_thread_id = result[0].id}); //update data variable      
+      db.collection('threads').find().sort({"id":-1}).limit(1).toArray(function(err,result){last_thread_id = result[0].id}); //update data variable      
       
-      mycollection.find().toArray(function (err, result) {
+      db.collection('threads').find().toArray(function (err, result) {
         if (err) {
           console.log(err);
         } else if (result.length) {
@@ -43,8 +42,8 @@ var refresh = function()
         });
         
         //users
-        mycollection = db.collection('users');
-        mycollection.find().toArray(function (err, result) {
+        
+        db.collection('users').find().toArray(function (err, result) {
         if (err) {
           console.log(err);
         } else if (result.length) {
@@ -56,11 +55,10 @@ var refresh = function()
         });
         
         //posts
-        mycollection = db.collection('posts');
 		
-        mycollection.find().sort({"id":-1}).limit(1).toArray(function(err,result){last_post_id = result[0].id_post}); //update data variable
+        db.collection('posts').find().sort({"id":-1}).limit(1).toArray(function(err,result){last_post_id = result[0].id_post}); //update data variable
         
-        mycollection.find().toArray(function (err, result) {
+        db.collection('posts').find().toArray(function (err, result) {
         if (err) {
           console.log(err);
         } else if (result.length) {
